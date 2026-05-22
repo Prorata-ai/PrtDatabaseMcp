@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "prt-database-local": {
+      "command": "/path/to/PrtDatabaseMcp/.venv/bin/python",
+      "args": ["-m", "prt_database_mcp", "--transport", "stdio"],
+      "cwd": "/path/to/PrtDatabaseMcp",
+      "env": {
+        "PYTHONPATH": "/path/to/PrtDatabaseMcp/src:/path/to/PrtMcpCommon/src",
+        "PRT_DB_MCP_CONNECTIONS": "local",
+        "PRT_DB_MCP_LOCAL_URL": "postgresql://postgres:password@localhost:54321/postgres"
+      }
+    },
+    "prt-database-cloud": {
+      "url": "https://mcp.dev.prorata.ai/database/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:PRT_MCP_API_KEY}"
+      }
+    }
+  }
+}

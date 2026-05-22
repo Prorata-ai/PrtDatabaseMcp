@@ -1,0 +1,365 @@
+{
+  "version": 1,
+  "tables": {
+    "User": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "User",
+      "columns": {
+        "id": "String",
+        "username": "String",
+        "name": "String",
+        "description": "String?",
+        "phone": "String?",
+        "email": "String",
+        "business_title": "String?",
+        "url": "String?",
+        "password": "String?",
+        "token": "String?",
+        "permissions": "Int",
+        "role": "String",
+        "enabled": "Boolean",
+        "settings": "Json"
+      }
+    },
+    "aggregators": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Aggregator",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "description": "String?",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "users": "User[]",
+        "publisher_groups": "PublisherGroup[]"
+      }
+    },
+    "publisher_groups": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "PublisherGroup",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "description": "String?",
+        "enabled": "Boolean",
+        "allowPublicationUseGistAnswers": "Boolean",
+        "allowGistWithNetworkContent": "Boolean",
+        "ref_token_id": "String?",
+        "partner_type": "String",
+        "tier": "Int",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "aggregator_id": "String?",
+        "aggregator": "Aggregator?",
+        "users": "User[]",
+        "publishers": "Publisher[]",
+        "channels": "Channel[]",
+        "owned_channels": "Channel[]",
+        "publisher_group_collections": "PublisherGroupCollection[]",
+        "ref_token": "Token?",
+        "gpa_account_requests": "GpaAccountRequest[]",
+        "sandbox_questions": "SandboxQuestion[]"
+      }
+    },
+    "Publisher": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Publisher",
+      "columns": {
+        "id": "String",
+        "publisher_group_id": "String",
+        "category_id": "String",
+        "name": "String",
+        "description": "String?",
+        "enabled": "Boolean",
+        "config": "Json"
+      }
+    },
+    "Site": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Site",
+      "columns": {
+        "id": "String",
+        "publisher_id": "String",
+        "name": "String",
+        "type": "String",
+        "description": "String?",
+        "url": "String",
+        "enabled": "Boolean",
+        "config": "Json"
+      }
+    },
+    "site_batch_entries": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "SiteBatchEntry",
+      "columns": {
+        "id": "String",
+        "batch_id": "String",
+        "site_id": "String",
+        "crawl_group_id": "String?",
+        "status": "SiteBatchStatus",
+        "message": "String?",
+        "timestamp": "DateTime",
+        "site": "Site"
+      }
+    },
+    "categories": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Category",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "publishers": "Publisher[]"
+      }
+    },
+    "Channel": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Channel",
+      "columns": {
+        "id": "String",
+        "content_type": "ContentType?",
+        "publisher_id": "String?",
+        "publisher_group_id": "String?",
+        "base_channel_id": "String?",
+        "publisher_network_id": "String?",
+        "owner_publisher_id": "String?",
+        "owner_publisher_group_id": "String?",
+        "ref_name": "String?",
+        "ref_token_id": "String?",
+        "name": "String",
+        "ref_token": "Token?",
+        "enabled": "Boolean",
+        "description": "String?",
+        "config": "Json"
+      }
+    },
+    "publisher_collections": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "PublisherCollection",
+      "columns": {
+        "remote_type": "String",
+        "remote_id": "String",
+        "publisher_id": "String",
+        "publisher": "Publisher"
+      }
+    },
+    "publisher_group_collections": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "PublisherGroupCollection",
+      "columns": {
+        "remote_type": "String",
+        "remote_id": "String",
+        "publisher_group_id": "String",
+        "publisher_group": "PublisherGroup"
+      }
+    },
+    "publisher_networks": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "PublisherNetwork",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "description": "String?",
+        "enabled": "Boolean",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "Channel": "Channel[]"
+      }
+    },
+    "GpaAccountRequest": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "GpaAccountRequest",
+      "columns": {
+        "id": "String",
+        "first_name": "String",
+        "last_name": "String",
+        "email": "String",
+        "search_type": "String",
+        "validation_token": "String",
+        "eula_accepted": "Boolean",
+        "config": "Json"
+      }
+    },
+    "feature_flags": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "FeatureFlag",
+      "columns": {
+        "id": "String",
+        "feature_name": "String",
+        "description": "String?",
+        "enabled": "Boolean",
+        "allowed_emails": "Json",
+        "created_at": "DateTime",
+        "updated_at": "DateTime"
+      }
+    },
+    "tokens": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Token",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "token": "String",
+        "type": "String",
+        "public_api_key": "String?",
+        "created_at": "DateTime",
+        "Channel": "Channel?",
+        "PublisherGroup": "PublisherGroup?"
+      }
+    },
+    "data_migrations": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "DataMigration",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "created_at": "DateTime"
+      }
+    },
+    "SystemEvent": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "SystemEvent",
+      "columns": {
+        "id": "String",
+        "type": "String",
+        "data": "Json"
+      }
+    },
+    "SystemSetting": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "SystemSetting",
+      "columns": {
+        "id": "String",
+        "name": "String",
+        "value": "Json"
+      }
+    },
+    "sandbox_questions": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "SandboxQuestion",
+      "columns": {
+        "id": "String",
+        "publisher_group_id": "String",
+        "publisher_id": "String?",
+        "role": "String",
+        "question": "String",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "publisher_group": "PublisherGroup",
+        "publisher": "Publisher?"
+      }
+    },
+    "_job_locks": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "JobLock",
+      "columns": {
+        "job_type": "String",
+        "instance_id": "String",
+        "locked_at": "DateTime",
+        "completed_at": "DateTime?",
+        "reschedule_interval_ms": "Int?"
+      }
+    },
+    "invitations": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "Invitation",
+      "columns": {
+        "id": "String",
+        "email": "String",
+        "token": "String",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "activated_at": "DateTime?",
+        "creator_user_id": "String",
+        "creator_user": "User",
+        "status": "String",
+        "status_message": "String?",
+        "error_type": "String?",
+        "error_message": "String?"
+      }
+    },
+    "report_column_preferences": {
+      "service": "PrtPublisherPortal",
+      "schema": "public",
+      "prismaModel": "ReportColumnPreference",
+      "columns": {
+        "id": "String",
+        "user_id": "String",
+        "report_type": "String",
+        "selected_columns": "Json",
+        "created_at": "DateTime",
+        "updated_at": "DateTime",
+        "user": "User"
+      }
+    },
+    "inference_requests": {
+      "service": "PrtDocumentInference",
+      "schema": "public",
+      "sourceFile": "PrtDocumentInference/src/prtdocumentinference/models/inference_request.py",
+      "columns": {}
+    },
+    "realtime_requests": {
+      "service": "PrtDocumentInference",
+      "schema": "public",
+      "sourceFile": "PrtDocumentInference/src/prtdocumentinference/models/realtime_request.py",
+      "columns": {}
+    },
+    "batch_documents": {
+      "service": "PrtDocumentInference",
+      "schema": "public",
+      "sourceFile": "PrtDocumentInference/src/prtdocumentinference/models/batch_document.py",
+      "columns": {}
+    },
+    "cron_locks": {
+      "service": "PrtDocumentInference",
+      "schema": "public",
+      "sourceFile": "PrtDocumentInference/src/prtdocumentinference/models/cron_lock.py",
+      "columns": {}
+    },
+    "batch_jobs": {
+      "service": "PrtDocumentInference",
+      "schema": "public",
+      "sourceFile": "PrtDocumentInference/src/prtdocumentinference/models/batch_job.py",
+      "columns": {}
+    },
+    "structured_products": {
+      "service": "PrtIndexingIngest",
+      "schema": "public",
+      "description": "Schema.org Product structured records",
+      "columns": {}
+    },
+    "structured_events": {
+      "service": "PrtIndexingIngest",
+      "schema": "public",
+      "description": "Schema.org Event structured records",
+      "columns": {}
+    },
+    "structured_places": {
+      "service": "PrtIndexingIngest",
+      "schema": "public",
+      "description": "Schema.org Place structured records",
+      "columns": {}
+    }
+  }
+}
