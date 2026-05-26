@@ -17,7 +17,10 @@ DOMAIN_DOCS: Dict[str, str] = {
     ),
     "batch_jobs": "PrtDocumentInference: Gemini batch job tracking.",
     "batch_documents": "PrtDocumentInference: documents assigned to a batch job.",
-    "structured_products": "PrtIndexingIngest: schema.org Product rows for structured RAG.",
+    "product": "PrtIndexingIngest: catalog.product (schema.org Product).",
+    "place": "PrtIndexingIngest: catalog.place (schema.org Place).",
+    "event": "PrtIndexingIngest: catalog.event (schema.org Event).",
+    "offer": "PrtIndexingIngest: catalog.offer (schema.org Offer per variant).",
 }
 
 

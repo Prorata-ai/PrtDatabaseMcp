@@ -82,22 +82,28 @@ def main() -> int:
     print(f"Inference: {len(inference)} tables")
 
     structured = {
-        "structured_products": {
+        "product": {
             "service": "PrtIndexingIngest",
-            "schema": "public",
-            "description": "Schema.org Product structured records",
+            "schema": "catalog",
+            "description": "schema.org Product (PrtSchemas catalog_v1)",
             "columns": {},
         },
-        "structured_events": {
+        "event": {
             "service": "PrtIndexingIngest",
-            "schema": "public",
-            "description": "Schema.org Event structured records",
+            "schema": "catalog",
+            "description": "schema.org Event (PrtSchemas catalog_v1)",
             "columns": {},
         },
-        "structured_places": {
+        "place": {
             "service": "PrtIndexingIngest",
-            "schema": "public",
-            "description": "Schema.org Place structured records",
+            "schema": "catalog",
+            "description": "schema.org Place (PrtSchemas catalog_v1)",
+            "columns": {},
+        },
+        "offer": {
+            "service": "PrtIndexingIngest",
+            "schema": "catalog",
+            "description": "schema.org Offer variants for catalog.product",
             "columns": {},
         },
     }

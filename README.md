@@ -2,6 +2,9 @@
 
 MCP server for **ProRata PostgreSQL** (`PrtDatabaseService`). Gives safe, read-only schema discovery and SQL queries against local (and optional remote) Postgres.
 
+## TODO: 
+sync with newly-added PrtSchemas for schema defintions and metadata
+
 ## Prerequisites
 
 1. **PrtDatabaseService** running:
